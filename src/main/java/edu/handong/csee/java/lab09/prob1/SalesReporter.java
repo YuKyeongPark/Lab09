@@ -115,18 +115,10 @@ public class SalesReporter {	//Class is a blueprint to create object
 				System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
 				System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
 				System.out.println(averageSales+" above the average.");	//prints whether or not the value of sales is higher than average 
-			}
+			}		
 		}
 		
-		System.out.println("The highest sales guy");	//prints text
-		for(int i=0; i<team.length; i++)	//for loop is executed until value of team.length
-		{
-			if(team[i].getSales() == highestSales) {	//if highestSales is same as value of team sales
-				
-				System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
-				System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
-			}
-		}
+		
 	
 	}
 }
