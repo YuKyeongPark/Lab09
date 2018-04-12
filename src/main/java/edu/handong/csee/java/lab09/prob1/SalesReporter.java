@@ -47,7 +47,7 @@ public class SalesReporter {	//Class is a blueprint to create object
 		
 		myReporter.getData();	//calls myReporter's method getData
 		myReporter.cal_average();	//calls myReporter's method cal_average
-		myReporter.highestSales();	//calls myReporter's method highestSales
+		myReporter.cal_highestSales();	//calls myReporter's method highestSales
 		myReporter.printOutResults();	//calls myReporter's method printOutResults
 	
 	}
@@ -90,7 +90,7 @@ public class SalesReporter {	//Class is a blueprint to create object
 		averageSales = sum/team.length;	//averageSale is division of sum and team.length
 	}
 
-	public void highestSales() {	//method to compare value and search highest sales
+	public void cal_highestSales() {	//method to compare value and search highest sales
 		for(int i = 0; i< team.length-1; i++)	//for loop is executed until value of team.length-1
 		{
 			if(team[i].getSales() < team[i+1].getSales())	//if next element is bigger than former element, 
@@ -114,10 +114,25 @@ public class SalesReporter {	//Class is a blueprint to create object
 				
 				System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
 				System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
-				System.out.println(averageSales+" above the average.");	//prints whether or not the value of sales is higher than average 
-			}		
+				System.out.println(team[i].getSales() - averageSales + " above the average.");	//prints whether or not the value of sales is higher than average 
+			}
+			
 		}
+		for(int i=0; i<team.length; i++)	//for loop is executed until value of team.length
+		{
+			if(team[i].getSales() < highestSales)	//if highestSales is bigger than value of sales
+			{
+				System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
+				System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
+				if(team[i].getSales() < averageSales)	//if value of sales is smaller than averageSales
+				{
+					System.out.println(averageSales -team[i].getSales()  + " below the average.");	//prints whether or not the value of sales is higher than average 
+				}else
+					System.out.println(team[i].getSales() - averageSales + " above the average.");	//prints text
+			}
 		
+		}	
+	
 		
 	
 	}
