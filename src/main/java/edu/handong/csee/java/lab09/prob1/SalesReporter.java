@@ -23,8 +23,8 @@ import java.util.Scanner;	//import Scanner class
 
 public class SalesReporter {	//Class is a blueprint to create object
 	
-	private double highestSales;	//declares variable highestSales
-	private double averageSales;	//declares variable averageSales
+	private double highestSales=0;	//declares variable highestSales
+	private double averageSales=0;	//declares variable averageSales
 	private SalesMan[] team ;	//team is SalesMan type and has number of salesman
 	private int numOfSalesman;	//declares variable numOfSalesman
 	//	private int numberOfAssociates; 	//Same as team.length
@@ -56,7 +56,7 @@ public class SalesReporter {	//Class is a blueprint to create object
 		
 		team = new SalesMan[numOfSalesman];	//initialize
 		
-		for(int i = 0; i < numOfSalesman; i++)	//for loop continues until value of numOfSalesman
+		for(int i = 0; i < team.length; i++)	//for loop continues until value of numOfSalesman
 		{
 			Scanner myScanner = new Scanner(System.in);	//user can input data
 			System.out.println("Enter data for associate number " + (i+1));	//prints number of index
@@ -91,15 +91,13 @@ public class SalesReporter {	//Class is a blueprint to create object
 	}
 
 	public void cal_highestSales() {	//method to compare value and search highest sales
-		for(int i = 0; i< team.length-1; i++)	//for loop is executed until value of team.length-1
+		for(int i = 0; i< team.length; i++)	//for loop is executed until value of team.length-1
 		{
-			if(team[i].getSales() < team[i+1].getSales())	//if next element is bigger than former element, 
+			if(team[i].getSales() > highestSales)	//if highestSales is smaller than sales, 
 			{
-				highestSales = team[i+1].getSales();	//changes value of highestSales
-			}
-			
+				highestSales = team[i].getSales();	//changes value of highestSales
+			}	
 		}
-		
 	}
 	
 	public void printOutResults() {	//method to print result
@@ -120,17 +118,20 @@ public class SalesReporter {	//Class is a blueprint to create object
 		}
 		for(int i=0; i<team.length; i++)	//for loop is executed until value of team.length
 		{
-			if(team[i].getSales() < highestSales)	//if highestSales is bigger than value of sales
+			if(team[i].getSales() != highestSales)	//if highestSales isn't same was sales
 			{
-				System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
-				System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
-				if(team[i].getSales() < averageSales)	//if value of sales is smaller than averageSales
+				if(team[i].getSales() < averageSales)	//if averageSales is bigger than value of sales
 				{
+					System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
+					System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
 					System.out.println(averageSales -team[i].getSales()  + " below the average.");	//prints whether or not the value of sales is higher than average 
-				}else
+				}else	//if averageSales is smaller than value of sales
+				{
+					System.out.println("Name: " + team[i].getmName());	//prints name which has highest sales
+					System.out.println("Sales: " + team[i].getSales());	//prints sales which has highest sales
 					System.out.println(team[i].getSales() - averageSales + " above the average.");	//prints text
+				}
 			}
-		
 		}	
 	
 		
